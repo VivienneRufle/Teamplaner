@@ -1,0 +1,20 @@
+1	Training	Fussblltraining	12.12.18	19:00	21:30	16	3	Treining in Bergalingen, Kunstrasen, Laufschuhe mitnehmen	0
+2	Familienfeier	Omas 90er Geburtstag	23.11.18	15:00	18:00	5	2	Der Geburtstag findet im Caffee Heimelig statt.	1
+3	Fussballspiel	Testspiel	05.04.19	18:00	21:00	12	5	Testspiel gegen den FC Bad Säckingen	2
+4	Sitzung	Teammeeting	21.12.18	14:00	16:00	8	2	-	0
+5	Ausflug	Ausflug in den Zoo	21.11.18	10:00	17:00	3	1	Ausflug mit den Neffen in den Zoo	1
+6	Essen	Abendessen	21.10.18	19:00	21:00	7	3	Essen im Subway	2
+7	Werkstatt	Autowerkstatt	23.10.18	15:00	16:00	2	0	Auto in den Service bringen	0
+8	Arzttermin	HNO Arzt termin	28.10.10	08:00	10:00	1	0	Arzt termin in Bad Säckingen bei Dr. Dreimalschlau	1
+9	Training	Fussblltraining	26.10.18	19:00	21:30	16	3	Treining in Bergalingen, Kunstrasen, Laufschuhe mitnehmen	2
+10	Training	Fussblltraining	28.10.18	20:00	22:30	12	5	Treining in Bergalingen, Kunstrasen, Laufschuhe mitnehmen	0
+11	Training	Fussblltraining	30.10.18	21:00	23:30	8	3	Treining in Bergalingen, Kunstrasen, Laufschuhe mitnehmen	1
+12	Training	Fussblltraining	01.11.18	22:00	00:30	4	2	Treining in Bergalingen, Kunstrasen, Laufschuhe mitnehmen	2
+13	Training	Fussblltraining	03.11.18	23:00	01:30	12	5	Treining in Bergalingen, Kunstrasen, Laufschuhe mitnehmen	0
+14	Training	Fussblltraining	05.11.18	00:00	02:30	16	3	Treining in Bergalingen, Kunstrasen, Laufschuhe mitnehmen	1
+15	Training	Fussblltraining	07.11.18	01:00	03:30	12	4	Treining in Bergalingen, Kunstrasen, Laufschuhe mitnehmen	2
+16	Training	Fussblltraining	09.11.18	02:00	04:30	8	2	Treining in Bergalingen, Kunstrasen, Laufschuhe mitnehmen	0
+17	Training	Fussblltraining	11.11.18	03:00	05:30	4	6	Treining in Bergalingen, Kunstrasen, Laufschuhe mitnehmen	1
+18	Training	Fussblltraining	13.11.18	04:00	06:30	12	3	Treining in Bergalingen, Kunstrasen, Laufschuhe mitnehmen	2
+19	Training	Fussblltraining	15.11.18	05:00	07:30	9	5	Treining in Bergalingen, Kunstrasen, Laufschuhe mitnehmen	0
+20	Training	Fussblltraining	17.11.18	06:00	08:30	7	2	Treining in Bergalingen, Kunstrasen, Laufschuhe mitnehmen	1
