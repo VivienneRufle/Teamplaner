@@ -26,6 +26,7 @@ public class TerminEditierenGUI extends JFrame implements ActionListener{
 	ArrayList<JButton> example = new ArrayList<JButton>();
 
 	TermininformationGUI infoB;
+	StartbildschirmGUI startB;
 		
 	//Frames
 	JFrame frameTermininformation = null;
@@ -125,14 +126,16 @@ public class TerminEditierenGUI extends JFrame implements ActionListener{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(250, 350);
 		setVisible(true);
-		setTitle("Termin hinzufügen");
+		setTitle("Termin editieren");
 	}	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//Wenn Button -> View wechesl zu termininfo
 		if (e.getSource() == buttonAbbrechen) {
+			System.out.println("button abbrechen");
 			infoB.showWindow();
+			System.out.println("befehl");
 			dispose();
 		}
 		

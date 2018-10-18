@@ -91,12 +91,10 @@ public class StartbildschirmGUI extends JFrame implements ActionListener {
 		//wenn nicht Button add -> view zu info wechseln
 		if (e.getSource() == add) {
 			frameTerminhinzufuegen = new TerminHinzufuegenGUI();
-			//frameTerminhinzufuegen.setVisible(true);
-			setVisible(false);
+			dispose();
 		} else {
 			for (int i = 0; i < example.size(); i++) {
 				if (e.getSource() == example.get(i)) {
-					//frameTermininformation.setVisible(true);
 					frameTermininformation = new TermininformationGUI(this, termin.get(i));
 					setVisible(false);
 					break;

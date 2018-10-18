@@ -158,6 +158,7 @@ public class TermininformationGUI extends JFrame implements ActionListener{
 		//wenn button -> view wechsel zu termineditieren
 		if (e.getSource() == buttoneditieren) {
 			frameTermineditieren = new TerminEditierenGUI();
+			setVisible(false);
 		}
 		
 		//wenn button -> zu termin zusagen

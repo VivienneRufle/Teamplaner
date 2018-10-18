@@ -112,7 +112,8 @@ public class TerminHinzufuegenGUI extends JFrame implements ActionListener{
 		//wenn Button -> view wechsel zu startbildschirm
 		if (e.getSource() == buttonAbbrechen) {
 			System.out.println("abbrechen");
-			startB.showWindow();
+			//startB.showWindow();
+			frameStartbildschirm = new StartbildschirmGUI();
 			dispose();
 			System.out.println("durchgespielt");
 		}
@@ -127,8 +128,8 @@ public class TerminHinzufuegenGUI extends JFrame implements ActionListener{
 			infos = textInfos.getText();
 			
 			System.out.println(titel + " " + beschreibung + " " + datum + " " + startZeit + " " + endZeit + " " + infos );
-			
-			startB.showWindow();
+
+			frameStartbildschirm = new StartbildschirmGUI();
 			dispose();
 			
 			textTitel.setText("");
