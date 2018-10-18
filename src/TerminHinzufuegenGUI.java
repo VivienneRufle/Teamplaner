@@ -19,6 +19,9 @@ public class TerminHinzufuegenGUI extends JFrame implements ActionListener{
 	int startZeit;
 	int endZeit;
 	String infos;
+	
+	StartbildschirmGUI startB;
+	
 	//Frames
 	JFrame frameStartbildschirm = null;
 	
@@ -52,6 +55,7 @@ public class TerminHinzufuegenGUI extends JFrame implements ActionListener{
 	JButton buttonHinzufuegen = new JButton("Hinzufügen");
 	
 	public TerminHinzufuegenGUI() {
+		
 		//layout
 		setLayout(new BorderLayout());
 		//"grund" Panel
@@ -103,18 +107,16 @@ public class TerminHinzufuegenGUI extends JFrame implements ActionListener{
 		setTitle("Termin hinzufügen");
 	}
 	
-	//view wechsel zum startbildschirm
-	public void setframeStartbildschirm(JFrame frameStartbildschirm) {
-        this.frameStartbildschirm = frameStartbildschirm;
-    }
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//wenn Button -> view wechsel zu startbildschirm
 		if (e.getSource() == buttonAbbrechen) {
-			frameStartbildschirm.setVisible(true);
-			setVisible(false);
+			System.out.println("abbrechen");
+			startB.showWindow();
+			dispose();
+			System.out.println("durchgespielt");
 		}
+		
 		//wenn Button -> view wechsel zu startbildschirm
 		if (e.getSource() == buttonHinzufuegen) {
 			titel = textTitel.getText();
@@ -125,8 +127,9 @@ public class TerminHinzufuegenGUI extends JFrame implements ActionListener{
 			infos = textInfos.getText();
 			
 			System.out.println(titel + " " + beschreibung + " " + datum + " " + startZeit + " " + endZeit + " " + infos );
-			frameStartbildschirm.setVisible(true);
-			setVisible(false);
+			
+			startB.showWindow();
+			dispose();
 			
 			textTitel.setText("");
 			textBeschreibung.setText("");

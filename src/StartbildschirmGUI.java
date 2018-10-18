@@ -29,13 +29,6 @@ public class StartbildschirmGUI extends JFrame implements ActionListener {
 	// Scroll
 	JScrollPane scrollPane = new JScrollPane(centerPanel);
 
-	// Buttons | Termineinträge
-	JButton example1 = new JButton("<html><b>Termin1</b><br>19.09.2018 - 19:00Uhr<html>");
-	JButton example2 = new JButton("<html><b>Termin2</b><br>19.09.2018 - 19:00Uhr<html>");
-	JButton example3 = new JButton("<html><b>Termin3</b><br>19.09.2018 - 19:00Uhr<html>");
-	JButton example4 = new JButton("<html><b>Termin4</b><br>19.09.2018 - 19:00Uhr<html>");
-	JButton example5 = new JButton("<html><b>Termin5</b><br>19.09.2018 - 19:00Uhr<html>");
-
 	// Button
 	JButton add = new JButton("+");
 	
@@ -76,11 +69,7 @@ public class StartbildschirmGUI extends JFrame implements ActionListener {
 		southPanel.setLayout(new GridLayout(1, 1));
 		// Button
 		southPanel.add(add);
-		// Button aktivieren | Termineinträge
-		/*example1.addActionListener(this);
-		example2.addActionListener(this);
-		example3.addActionListener(this);
-		example4.addActionListener(this);*/
+		
 		// Button aktivieren
 		add.addActionListener(this);
 
@@ -95,50 +84,14 @@ public class StartbildschirmGUI extends JFrame implements ActionListener {
 	public static void main(String[] args) {
 		// starter
 		StartbildschirmGUI gui = new StartbildschirmGUI();
-
-		// Views
-		StartbildschirmGUI startbildschirm = new StartbildschirmGUI();
-		TerminHinzufuegenGUI terminhinzufuegen = new TerminHinzufuegenGUI();
-		//TermininformationGUI termininformation = new TermininformationGUI();
-		//TerminEditierenGUI termineditieren = new TerminEditierenGUI();
-
-		// View wechsel startbildschirm -> termininformation|terminhinzufügen
-		//startbildschirm.setframeTermininformation(termininformation);
-		startbildschirm.setframeTerminhinzufuegen(terminhinzufuegen);
-
-		// View wechsel terminhinzufügen -> startbildschirm
-		terminhinzufuegen.setframeStartbildschirm(startbildschirm);
-
-		// View wechsel termininformation -> startbildschirm|termineditieren
-		//termininformation.setframeStartbildschirm(startbildschirm);
-		//termininformation.setframeTermineditieren(termineditieren);
-
-		// View wechsel termineditieren -> Termininfo
-		//termineditieren.setframeTermininformation(termininformation);
-
-		// aktuelles view sichtbar
-		startbildschirm.setVisible(true);
 	}
-
-	// View wechsel zu termininfo
-	public void setframeTermininformation(JFrame frameTermininformation) {
-		this.frameTermininformation = frameTermininformation;
-	}
-
-	// View wechsel zu terminhinzufügen
-	public void setframeTerminhinzufuegen(JFrame frameTerminhinzufuegen) {
-		this.frameTerminhinzufuegen = frameTerminhinzufuegen;
-	}
-
+	
 	public void actionPerformed(ActionEvent e) {
-		/*// wenn Button -> view wechsel zu termininfo
-		if (e.getSource() == example1) {
-			frameTermininformation.setVisible(true);
-			setVisible(false);
-		}*/
-		// wenn Button -> view wechsel zu termininfo oder hinzufügen
+		// wenn Button add -> view wechsel zu hinzufügen
+		//wenn nicht Button add -> view zu info wechseln
 		if (e.getSource() == add) {
-			frameTerminhinzufuegen.setVisible(true);
+			frameTerminhinzufuegen = new TerminHinzufuegenGUI();
+			//frameTerminhinzufuegen.setVisible(true);
 			setVisible(false);
 		} else {
 			for (int i = 0; i < example.size(); i++) {

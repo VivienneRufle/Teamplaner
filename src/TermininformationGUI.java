@@ -12,15 +12,18 @@ import javax.swing.JPanel;
 
 
 public class TermininformationGUI extends JFrame implements ActionListener{
+	//ÜbergabeVariabeln
 	int zusagen;
 	String zusageString;
 	int absage;
 	String absageString;
 	int absagecounter = 0;
 	
+	//Verknüpfungen
 	Daten d = new Daten();
 	ArrayList<Termin> termin;
 	ArrayList<JButton> example = new ArrayList<JButton>();
+	StartbildschirmGUI startB;
 	
 	//frames
 	JFrame frameStartbildschirm = null;
@@ -60,17 +63,17 @@ public class TermininformationGUI extends JFrame implements ActionListener{
 	JButton buttonloschen = new JButton ("löschen");
 	JButton buttonZusagen = new JButton("Zusagen");
 	JButton buttonAbsagen = new JButton("Absagen");
-	
-	StartbildschirmGUI startB;
 
 	//public TermininformationGUI() {
 	public TermininformationGUI(StartbildschirmGUI startB, Termin termin) {
 		
 		//layout
 		setLayout(new BorderLayout());
-		termin.print();
+		
+		//verknüpfen Startbildschirm
 		this.startB = startB;
 		
+		//termindaten übergeben
 		labelTitel.setText(termin.getTitel());
 		labelBeschreibung.setText(termin.getBeschreibung());
 		labelDatum.setText(termin.getDatum());
@@ -80,13 +83,9 @@ public class TermininformationGUI extends JFrame implements ActionListener{
 		labelAbsage.setText(Integer.toString(termin.getAbsagen()));
 		labelInfos.setText(termin.getInfo());
 		
-		
 		//"grund" layout
 		add((centerPanel), BorderLayout.CENTER);
-		add((southPanel), BorderLayout.SOUTH);
-		
-		//labelTitel.setText(t.getTitel());
-		
+		add((southPanel), BorderLayout.SOUTH);		
 		
 		//Center Panel Labels setzen
 		centerPanel.setLayout(new GridLayout(8, 2));
@@ -144,42 +143,21 @@ public class TermininformationGUI extends JFrame implements ActionListener{
 		setTitle("Termininformation");
 	}
 	
-	
-		
-	//view wechsel zu termineditieren
-	public void setframeTermineditieren(JFrame frameTermineditieren) {
-        this.frameTermineditieren = frameTermineditieren;
-    }
-	//view wechsel zu startbildschirm
-	public void setframeStartbildschirm(JFrame frameStartbildschirm) {
-        this.frameStartbildschirm = frameStartbildschirm;
-    }
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//wenn button -> view wechsel zu startbildschirm
 		if (e.getSource() == buttonzuruck) {
-			//frameStartbildschirm.setVisible(true);
 			startB.showWindow();
 			dispose();
 		}
 		//wenn Button -> view wechsel zu startbildschirm
 		if (e.getSource() == buttonloschen) {
-			/*for (int i = 0; i < example.size(); i++) {
-				if (e.getSource() == example.get(i)) {
-					System.out.println(termin.get(i).getTitel());
-					//frameTermininformation.setVisible(true);
-					frameTermineditieren = new TerminEditierenGUI(this, termin.get(i));
-					setVisible(false);
-					break;
-				}*/
-			frameStartbildschirm.setVisible(true);
-			setVisible(false);
+			startB.showWindow();
+			dispose();
 		}
-		//wenn button ->vie wechsel zu termineditieren
+		//wenn button -> view wechsel zu termineditieren
 		if (e.getSource() == buttoneditieren) {
-			frameTermineditieren.setVisible(true);
-			setVisible(false);
+			frameTermineditieren = new TerminEditierenGUI();
 		}
 		
 		//wenn button -> zu termin zusagen
@@ -218,7 +196,7 @@ public class TermininformationGUI extends JFrame implements ActionListener{
 		//wenn button -> termin absagen
 		if (e.getSource() == buttonAbsagen) {
 			if (absagecounter == 0 ) {
-				//Anzahl absagen Hochsetzen
+				//Anzahl absagen hochsetzen
 				absage = Integer.parseInt(labelAbsage.getText());
 				absage++;
 				absageString = Integer.toString(absage);
@@ -234,7 +212,7 @@ public class TermininformationGUI extends JFrame implements ActionListener{
 				absage++;
 				absageString = Integer.toString(absage);
 				labelAbsage.setText(absageString);
-				//Anzahl zusagen runter sezen
+				//Anzahl zusagen runter setzen
 				zusagen = Integer.parseInt(labelZusgae.getText());
 				zusagen = zusagen - 1;
 				zusageString = Integer.toString(zusagen);
@@ -246,5 +224,9 @@ public class TermininformationGUI extends JFrame implements ActionListener{
 				
 			}
 		}
+	}
+
+	public void showWindow() {
+		setVisible(true);
 	}
 }
