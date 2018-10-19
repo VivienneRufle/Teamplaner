@@ -2,6 +2,13 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -16,14 +23,20 @@ public class TerminHinzufuegenGUI extends JFrame implements ActionListener{
 	String titel;
 	String beschreibung;
 	String datum;
-	int startZeit;
-	int endZeit;
+	String startZeit;
+	String endZeit;
+	String zusage;
+	String absage;
 	String infos;
+	String status;
+	
+	String[] newTermin = new String[9];
 	
 	StartbildschirmGUI startB;
 	
 	//Frames
 	JFrame frameStartbildschirm = null;
+	Update frameUpdate = null;
 	
 	//JPanel
 	JPanel centerPanel = new JPanel();
@@ -54,7 +67,7 @@ public class TerminHinzufuegenGUI extends JFrame implements ActionListener{
 	JButton buttonAbbrechen = new JButton("Abbrechen");
 	JButton buttonHinzufuegen = new JButton("Hinzufügen");
 	
-	public TerminHinzufuegenGUI() {
+	public TerminHinzufuegenGUI(/*StartbildschirmGUI startB, Termin termin*/) {
 		
 		//layout
 		setLayout(new BorderLayout());
@@ -105,39 +118,51 @@ public class TerminHinzufuegenGUI extends JFrame implements ActionListener{
 		setSize(250, 350);
 		setVisible(true);
 		setTitle("Termin hinzufügen");
+		
+		int id = 100;
+		titel = textTitel.getText();
+		beschreibung = textBeschreibung.getText();
+		datum = textDatum.getText();
+		startZeit = Integer.toString(comboBoxStartZeit.getSelectedIndex());
+		endZeit = Integer.toString(comboBoxEndzeit.getSelectedIndex());
+		infos = textInfos.getText();
+		
+		newTermin[0] = "21";
+		newTermin[1] = titel;
+		newTermin[2] = beschreibung;
+		newTermin[3] = datum;
+		newTermin[4] = startZeit;
+		newTermin[5] = endZeit;
+		newTermin[6] = "0";
+		newTermin[7] = "0";
+		newTermin[8] = infos;
+		newTermin[9] = "0";
+
+	
+		
 	}
+	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//wenn Button -> view wechsel zu startbildschirm
 		if (e.getSource() == buttonAbbrechen) {
-			System.out.println("abbrechen");
 			//startB.showWindow();
-			frameStartbildschirm = new StartbildschirmGUI();
+			frameStartbildschirm = new StartbildschirmGUI(/*null*/);
 			dispose();
-			System.out.println("durchgespielt");
 		}
 		
 		//wenn Button -> view wechsel zu startbildschirm
 		if (e.getSource() == buttonHinzufuegen) {
-			titel = textTitel.getText();
-			beschreibung = textBeschreibung.getText();
-			datum = textDatum.getText();
-			startZeit = comboBoxStartZeit.getSelectedIndex();
-			endZeit = comboBoxEndzeit.getSelectedIndex();
-			infos = textInfos.getText();
-			
-			System.out.println(titel + " " + beschreibung + " " + datum + " " + startZeit + " " + endZeit + " " + infos );
-
-			frameStartbildschirm = new StartbildschirmGUI();
-			dispose();
-			
 			textTitel.setText("");
 			textBeschreibung.setText("");
 			textDatum.setText("");
 			comboBoxStartZeit.setSelectedIndex(17);
 			comboBoxEndzeit.setSelectedIndex(20);
 			textInfos.setText("");
+			//frameUpdate = new Update(newTermin);
+			frameStartbildschirm = new StartbildschirmGUI(/*newTermin*/);
+			dispose();
 		}
 		
 	}

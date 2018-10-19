@@ -21,6 +21,7 @@ public class StartbildschirmGUI extends JFrame implements ActionListener {
 	// Frames
 	JFrame frameTermininformation = null;
 	JFrame frameTerminhinzufuegen = null;
+	Update frameUpdate = null;
 
 	// Panel
 	JPanel centerPanel = new JPanel();
@@ -36,7 +37,9 @@ public class StartbildschirmGUI extends JFrame implements ActionListener {
 	ArrayList<Termin> termin;
 	ArrayList<JButton> example = new ArrayList<JButton>();
 
-	public StartbildschirmGUI() {
+	public StartbildschirmGUI(/*String[] newTremin*/) {
+		//frameUpdate = new Update(null);
+		
 		// Layout
 		setLayout(new BorderLayout());
 
@@ -50,20 +53,30 @@ public class StartbildschirmGUI extends JFrame implements ActionListener {
 		centerPanel.setLayout(new GridLayout(termin.size(), 1));
 		
 		//Termin Buttons
-		int i = 0;
 		for (Termin t : termin) {
 			JButton button = new JButton(
 					"<html><b>" + t.getTitel() + "</b><br>" + t.getDatum() + " - " + t.getStartZeit() + "<html>");
 
 			centerPanel.add(button);
-			button.setToolTipText("<html><b>" + t.getTitel() + "</b><br>" + t.getBeschreibung() + "<br>" + t.getDatum()
-					+ "<br>" + t.getStartZeit() + " - " + t.getEndZeit() + "<br>zugesagt");
 			button.setOpaque(true);
-			button.setBackground(Color.GRAY);
 			button.addActionListener(this);
-			i++;
+			
+			if (t.getStatus() == 0) {
+				button.setBackground(Color.GRAY);
+				button.setToolTipText("<html><b>" + t.getTitel() + "</b><br>" + t.getBeschreibung() + "<br>" + t.getDatum()
+				+ "<br>" + t.getStartZeit() + " - " + t.getEndZeit() + "<br>-");
+			}else if (t.getStatus() == 1){
+				button.setBackground(Color.GREEN);
+				button.setToolTipText("<html><b>" + t.getTitel() + "</b><br>" + t.getBeschreibung() + "<br>" + t.getDatum()
+				+ "<br>" + t.getStartZeit() + " - " + t.getEndZeit() + "<br>zugesagt");
+			}else if (t.getStatus() == 2){
+				button.setBackground(Color.RED);
+				button.setToolTipText("<html><b>" + t.getTitel() + "</b><br>" + t.getBeschreibung() + "<br>" + t.getDatum()
+				+ "<br>" + t.getStartZeit() + " - " + t.getEndZeit() + "<br>abgesagt");
+			}
 			example.add(button);
 		}
+		
 
 		// south Panel
 		southPanel.setLayout(new GridLayout(1, 1));
@@ -83,7 +96,7 @@ public class StartbildschirmGUI extends JFrame implements ActionListener {
 
 	public static void main(String[] args) {
 		// starter
-		StartbildschirmGUI gui = new StartbildschirmGUI();
+		StartbildschirmGUI gui = new StartbildschirmGUI(/*null*/);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -91,11 +104,11 @@ public class StartbildschirmGUI extends JFrame implements ActionListener {
 		//wenn nicht Button add -> view zu info wechseln
 		if (e.getSource() == add) {
 			frameTerminhinzufuegen = new TerminHinzufuegenGUI();
-			dispose();
 		} else {
 			for (int i = 0; i < example.size(); i++) {
 				if (e.getSource() == example.get(i)) {
 					frameTermininformation = new TermininformationGUI(this, termin.get(i));
+					//dispose();
 					setVisible(false);
 					break;
 				}

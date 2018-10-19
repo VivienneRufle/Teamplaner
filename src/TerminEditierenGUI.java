@@ -22,7 +22,6 @@ public class TerminEditierenGUI extends JFrame implements ActionListener{
 	String infos;
 	
 	Daten d = new Daten();
-	ArrayList<Termin> termin;
 	ArrayList<JButton> example = new ArrayList<JButton>();
 
 	TermininformationGUI infoB;
@@ -30,6 +29,7 @@ public class TerminEditierenGUI extends JFrame implements ActionListener{
 		
 	//Frames
 	JFrame frameTermininformation = null;
+	JFrame frameStartbildschirm = null;
 	
 	//JPanel
 	JPanel centerPanel = new JPanel();
@@ -60,22 +60,24 @@ public class TerminEditierenGUI extends JFrame implements ActionListener{
 	JButton buttonAbbrechen = new JButton("Abbrechen");
 	JButton buttonEditieren = new JButton("Editieren");
 	
-	public TerminEditierenGUI (/*TermininformationGUI infoB, Termin termin*/){
-		//this.infoB = infoB;
+	public TerminEditierenGUI (/*String[] changeTermin*/){
 		
 		setLayout(new BorderLayout());
 		//"grund" Panel
 		add((centerPanel), BorderLayout.CENTER);
 		add((southPanel), BorderLayout.SOUTH);
-		/*labelTitel.setText(termin.getTitel());
-		labelBeschreibung.setText(termin.getBeschreibung());
-		labelDatum.setText(termin.getDatum());
-		labelStartZeit.setText(termin.getStartZeit());
-		labelEndzeit.setText(termin.getEndZeit());
-		labelInfos.setText(termin.getInfo());*/
+		//System.out.println(termin);
+		/*
+		textTitel.setText(changeTermin[1]);
+		textBeschreibung.setText(changeTermin[2]);
+		textDatum.setText(changeTermin[3]);
+		textStartZeit.setText(changeTermin[4]);
+		textEndzeit.setText(changeTermin[5]);
+		textInfos.setText(changeTermin[8]);
+		*/
+		/*titel = startB.getTitle();
 		
-		
-		/*textTitel.setText(titel);
+		textTitel.setText(titel);
 		textBeschreibung.setText(beschreibung);
 		textDatum.setText(datum);
 		comboBoxStartZeit.setSelectedIndex(startZeit);
@@ -133,14 +135,15 @@ public class TerminEditierenGUI extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		//Wenn Button -> View wechesl zu termininfo
 		if (e.getSource() == buttonAbbrechen) {
-			System.out.println("button abbrechen");
+			//frameTermininformation = new TermininformationGUI(null, null);
 			infoB.showWindow();
-			System.out.println("befehl");
 			dispose();
 		}
 		
 		//Wenn Button -> View wechsel zu termininfo
 		if (e.getSource() == buttonEditieren) {
+			//startB.dispose();
+			//frameStartbildschirm = new StartbildschirmGUI(/*null */);
 			infoB.showWindow();
 			dispose();
 		}
