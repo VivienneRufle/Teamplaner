@@ -18,17 +18,18 @@ public class TermininformationGUI extends JFrame implements ActionListener{
 	int absage;
 	String absageString;
 	int absagecounter = 0;
-	
 	String status;
 	String id;
 	
-	//Verknüpfungen
+	//Classen
 	Daten d = new Daten();
+	
+	//Arrays
 	ArrayList<Termin> termin;
 	ArrayList<JButton> example = new ArrayList<JButton>();
-	StartbildschirmGUI startB;
-	
 	String[] changeTermin = new String[9];
+	
+	StartbildschirmGUI startB;
 	
 	//frames
 	JFrame frameStartbildschirm = null;
@@ -69,15 +70,14 @@ public class TermininformationGUI extends JFrame implements ActionListener{
 	JButton buttonZusagen = new JButton("Zusagen");
 	JButton buttonAbsagen = new JButton("Absagen");
 
-	//public TermininformationGUI() {
 	public TermininformationGUI(StartbildschirmGUI startB, Termin termin) {
 		
 		//layout
 		setLayout(new BorderLayout());
-
+		
 		this.startB = startB;
 		
-		//termindaten übergeben
+		//termindaten Übergeben an Labels
 		labelTitel.setText("<html><b>" + termin.getTitel() + "</b><br>");
 		labelBeschreibung.setText(termin.getBeschreibung());
 		labelDatum.setText(termin.getDatum());
@@ -86,24 +86,7 @@ public class TermininformationGUI extends JFrame implements ActionListener{
 		labelZusgae.setText(Integer.toString(termin.getZusagen()));
 		labelAbsage.setText(Integer.toString(termin.getAbsagen()));
 		labelInfos.setText(termin.getInfo());
-		
-		status = Integer.toString(termin.getStatus());
-		id = Integer.toString(termin.getId());
-		
-		//changeTermin[0] = id;
-		changeTermin[1] = labelTitel.getText();
-		changeTermin[2] = labelBeschreibung.getText();
-		changeTermin[3] = labelDatum.getText();
-		changeTermin[4] = labelStartZeit.getText();
-		changeTermin[5] = labelEndzeit.getText();
-		changeTermin[6] = labelZusgae.getText();
-		changeTermin[7] = labelAbsage.getText();
-		changeTermin[8] = labelInfos.getText();
-		//changeTermin[9] = status;
-		System.out.println(id);
-		System.out.println(changeTermin);
 
-		
 		//"grund" layout
 		add((centerPanel), BorderLayout.CENTER);
 		add((southPanel), BorderLayout.SOUTH);		
@@ -157,7 +140,7 @@ public class TermininformationGUI extends JFrame implements ActionListener{
 		buttonZusagen.addActionListener(this);
 		buttonAbsagen.addActionListener(this);
 		
-		//view allgemein
+		//View allgemein
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(250, 350);
 		setVisible(true);
@@ -166,23 +149,23 @@ public class TermininformationGUI extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//wenn button -> view wechsel zu startbildschirm
+		//Button zurück -> View wechseln zum Startbildschirm
 		if (e.getSource() == buttonzuruck) {
 			startB.showWindow();
 			dispose();
 		}
-		//wenn Button -> view wechsel zu startbildschirm
+		//Button löschen -> View wechseln zum Startbildschirm
 		if (e.getSource() == buttonloschen) {
 			startB.showWindow();
 			dispose();
 		}
-		//wenn button -> view wechsel zu termineditieren
+		//Button Editieren -> View wechseln zum Termineditieren
 		if (e.getSource() == buttoneditieren) {
-			frameTermineditieren = new TerminEditierenGUI(/*changeTermin*/);
+			frameTermineditieren = new TerminEditierenGUI();
 			setVisible(false);
 		}
 		
-		//wenn button -> zu termin zusagen
+		//Button zusagen -> zum Termin zusagen
 		if (e.getSource() == buttonZusagen) {
 			if (absagecounter == 0 ) {
 				//anzahl zusagen hochsetzen
@@ -215,7 +198,7 @@ public class TermininformationGUI extends JFrame implements ActionListener{
 			
 		}
 		
-		//wenn button -> termin absagen
+		//Button absagen -> zum Termin absagen
 		if (e.getSource() == buttonAbsagen) {
 			if (absagecounter == 0 ) {
 				//Anzahl absagen hochsetzen
@@ -248,6 +231,7 @@ public class TermininformationGUI extends JFrame implements ActionListener{
 		}
 	}
 
+	//Methode Fenster anzeigen
 	public void showWindow() {
 		setVisible(true);
 	}

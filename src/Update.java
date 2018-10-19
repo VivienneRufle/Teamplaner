@@ -46,13 +46,7 @@ public class Update {
 		neu.add(newTermin[8]);
 		neu.add(newTermin[9]);
 		
-		
-		
-		
-		
-		listInDatei(neu, new File("list.txt")); 
-		frameStartbildschirm = new StartbildschirmGUI(/*null*/);
-		
+		listInDatei(neu, new File("Termine.txt")); 
 	}
 	
 	

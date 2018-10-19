@@ -21,7 +21,6 @@ public class StartbildschirmGUI extends JFrame implements ActionListener {
 	// Frames
 	JFrame frameTermininformation = null;
 	JFrame frameTerminhinzufuegen = null;
-	Update frameUpdate = null;
 
 	// Panel
 	JPanel centerPanel = new JPanel();
@@ -33,16 +32,17 @@ public class StartbildschirmGUI extends JFrame implements ActionListener {
 	// Button
 	JButton add = new JButton("+");
 	
+	//Classen
 	Daten d = new Daten();
+	
+	//Arrays
 	ArrayList<Termin> termin;
-	ArrayList<JButton> example = new ArrayList<JButton>();
+	ArrayList<JButton> buttonArray = new ArrayList<JButton>();
 
-	public StartbildschirmGUI(/*String[] newTremin*/) {
-		//frameUpdate = new Update(null);
-		
+	public StartbildschirmGUI() {
 		// Layout
 		setLayout(new BorderLayout());
-
+		
 		termin = d.generateTermin();
 
 		// "grund" Panel
@@ -61,6 +61,7 @@ public class StartbildschirmGUI extends JFrame implements ActionListener {
 			button.setOpaque(true);
 			button.addActionListener(this);
 			
+			//Hintergrund der Buttons
 			if (t.getStatus() == 0) {
 				button.setBackground(Color.GRAY);
 				button.setToolTipText("<html><b>" + t.getTitel() + "</b><br>" + t.getBeschreibung() + "<br>" + t.getDatum()
@@ -74,13 +75,13 @@ public class StartbildschirmGUI extends JFrame implements ActionListener {
 				button.setToolTipText("<html><b>" + t.getTitel() + "</b><br>" + t.getBeschreibung() + "<br>" + t.getDatum()
 				+ "<br>" + t.getStartZeit() + " - " + t.getEndZeit() + "<br>abgesagt");
 			}
-			example.add(button);
+			buttonArray.add(button);
 		}
 		
-
 		// south Panel
 		southPanel.setLayout(new GridLayout(1, 1));
-		// Button
+		
+		// Button Hinzufügen
 		southPanel.add(add);
 		
 		// Button aktivieren
@@ -91,24 +92,23 @@ public class StartbildschirmGUI extends JFrame implements ActionListener {
 		setSize(250, 350);
 		setVisible(true);
 		setTitle("Termin übersicht");
-
 	}
 
 	public static void main(String[] args) {
 		// starter
-		StartbildschirmGUI gui = new StartbildschirmGUI(/*null*/);
+		StartbildschirmGUI gui = new StartbildschirmGUI();
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		// wenn Button add -> view wechsel zu hinzufügen
-		//wenn nicht Button add -> view zu info wechseln
+		//Button hinzufügen -> View wechseln zu Hinzufügen
+		//nicht Button hinzufügen -> View wechseln zu Info
 		if (e.getSource() == add) {
 			frameTerminhinzufuegen = new TerminHinzufuegenGUI();
+			dispose();
 		} else {
-			for (int i = 0; i < example.size(); i++) {
-				if (e.getSource() == example.get(i)) {
+			for (int i = 0; i < buttonArray.size(); i++) {
+				if (e.getSource() == buttonArray.get(i)) {
 					frameTermininformation = new TermininformationGUI(this, termin.get(i));
-					//dispose();
 					setVisible(false);
 					break;
 				}
@@ -116,6 +116,8 @@ public class StartbildschirmGUI extends JFrame implements ActionListener {
 		}
 
 	}
+	
+	//Methode Fenster anzeigen
 	public void showWindow() {
 		setVisible(true);
 	}

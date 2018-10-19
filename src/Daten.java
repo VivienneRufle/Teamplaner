@@ -7,7 +7,8 @@ import java.util.ArrayList;
 
 public class Daten {
 
-	 public ArrayList<Termin> generateTermin() {
+	//Methode -> Daten aus Text Datei auslesen -> Daten in Array speichern
+	public ArrayList<Termin> generateTermin() {
 	        ArrayList<Termin> termin = new ArrayList<Termin>();
 	        try {
 	            FileInputStream fstream = new FileInputStream("Termine.txt");

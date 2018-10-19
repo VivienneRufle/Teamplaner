@@ -20,23 +20,23 @@ import javax.swing.JLabel;
 
 
 public class TerminHinzufuegenGUI extends JFrame implements ActionListener{
-	String titel;
-	String beschreibung;
-	String datum;
+	//ÜbergabeVariabeln
 	String startZeit;
 	String endZeit;
-	String zusage;
-	String absage;
-	String infos;
-	String status;
+	String id;
 	
-	String[] newTermin = new String[9];
+	//Arrays
+	String[] newTermin = new String[10];
+	ArrayList<Termin> termin;
+	
+	//Classen
+	Daten d = new Daten();
+	Update u = new Update(newTermin);
 	
 	StartbildschirmGUI startB;
 	
 	//Frames
 	JFrame frameStartbildschirm = null;
-	Update frameUpdate = null;
 	
 	//JPanel
 	JPanel centerPanel = new JPanel();
@@ -67,10 +67,11 @@ public class TerminHinzufuegenGUI extends JFrame implements ActionListener{
 	JButton buttonAbbrechen = new JButton("Abbrechen");
 	JButton buttonHinzufuegen = new JButton("Hinzufügen");
 	
-	public TerminHinzufuegenGUI(/*StartbildschirmGUI startB, Termin termin*/) {
+	public TerminHinzufuegenGUI() {
 		
 		//layout
 		setLayout(new BorderLayout());
+		
 		//"grund" Panel
 		add((centerPanel), BorderLayout.CENTER);
 		add((southPanel), BorderLayout.SOUTH);
@@ -119,49 +120,41 @@ public class TerminHinzufuegenGUI extends JFrame implements ActionListener{
 		setVisible(true);
 		setTitle("Termin hinzufügen");
 		
-		int id = 100;
-		titel = textTitel.getText();
-		beschreibung = textBeschreibung.getText();
-		datum = textDatum.getText();
+		//Array Daten in String speichern
 		startZeit = Integer.toString(comboBoxStartZeit.getSelectedIndex());
 		endZeit = Integer.toString(comboBoxEndzeit.getSelectedIndex());
-		infos = textInfos.getText();
 		
-		newTermin[0] = "21";
-		newTermin[1] = titel;
-		newTermin[2] = beschreibung;
-		newTermin[3] = datum;
+		termin = d.generateTermin();
+		id = Integer.toString(termin.size());
+		
+		//Array mit neuen Daten füllen
+		newTermin[0] = id;
+		newTermin[1] = textTitel.getText();
+		newTermin[2] = textBeschreibung.getText();
+		newTermin[3] = textDatum.getText();
 		newTermin[4] = startZeit;
 		newTermin[5] = endZeit;
 		newTermin[6] = "0";
 		newTermin[7] = "0";
-		newTermin[8] = infos;
+		newTermin[8] = textInfos.getText();
 		newTermin[9] = "0";
-
-	
-		
 	}
 	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//wenn Button -> view wechsel zu startbildschirm
+		//Button abbrechen -> View wechseln zum Startbildschirm
 		if (e.getSource() == buttonAbbrechen) {
-			//startB.showWindow();
-			frameStartbildschirm = new StartbildschirmGUI(/*null*/);
+			startB.showWindow();
+			//frameStartbildschirm = new StartbildschirmGUI();
 			dispose();
 		}
 		
-		//wenn Button -> view wechsel zu startbildschirm
+		//Button hinzufügen -> View wechseln zum Startbildschirm
 		if (e.getSource() == buttonHinzufuegen) {
-			textTitel.setText("");
-			textBeschreibung.setText("");
-			textDatum.setText("");
-			comboBoxStartZeit.setSelectedIndex(17);
-			comboBoxEndzeit.setSelectedIndex(20);
-			textInfos.setText("");
-			//frameUpdate = new Update(newTermin);
-			frameStartbildschirm = new StartbildschirmGUI(/*newTermin*/);
+			u = new Update(newTermin);
+			startB.showWindow();
+			//frameStartbildschirm = new StartbildschirmGUI();
 			dispose();
 		}
 		

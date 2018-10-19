@@ -11,6 +11,7 @@ public class Termin {
 	private String info;
 	private int status;
 
+	//Daten aus Array in Variablen hinterlegen
 	public Termin(int id, String titel, String beschreibung, String datum, String startZeit, String endZeit,
 			int zusagen, int absagen, String info, int status) {
 	
